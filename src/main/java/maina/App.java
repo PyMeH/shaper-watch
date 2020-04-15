@@ -2,21 +2,18 @@ package maina;
 
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-import java.text.AttributedCharacterIterator;
+
 import java.text.AttributedString;
 
 import org.apache.batik.dom.GenericDOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMImplementation;
 
 public class App {
     //radii
@@ -33,10 +30,10 @@ public class App {
     final double yCenter = rOuterCut;
 
     //colors
-    final Color colCutLine = Color.red;
-    final Color colPlywood = new Color(228, 198, 170); //light brown
+    final Color colCutLine = Color.black;
+    final Color colPlywood = Color. white; // new Color(228, 198, 170); //light brown
     final Color colClockFace = new Color(188, 158, 130); //brown
-    final Color colHole = new Color(245, 181, 88); //yellowish orange
+    final Color colHole = Color.white; // new Color(245, 181, 88); //yellowish orange
 
     //.svg generator
     final Document doc = GenericDOMImplementation.getDOMImplementation()
@@ -80,13 +77,22 @@ public class App {
     }
 
     private void drawRomanLettersForHour(double degrees) {
+        final Font currentFont = g.getFont();
+        final AffineTransform scale2x = new AffineTransform();
+        scale2x.scale(2,2);
+        g.setFont(currentFont.deriveFont(scale2x)); //set font size to double
+
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 48));
+
+
+
         double radians = Math.toRadians(degrees);
-        int hour = (int) Math.round(degrees / 30);
-        System.out.println(radians + " rad \t= " + (int) degrees + " deg\tis " + hour + "-th hour, which is\t" + hours[hour]);
-        final AttributedString aStr = new AttributedString(hours[hour]);
+        int hourIndex = (int) Math.round(degrees / 30);
+        System.out.println(radians + " rad \t= " + (int) degrees + " deg, which is\t" + hours[hourIndex]);
+        final AttributedString aStr = new AttributedString(hours[hourIndex]);
         final AffineTransform transform = new AffineTransform();
         transform.rotate(radians + Math.toRadians(90.0)); // hour-by-hour rotation is 30 degrees, add 90 more, as we start at rightmost point
-        // transform.scale(2,2);
+        // transform.scale(2,2); //does not work, as letters start to overlap (transformation is applied to every char, not the whole text)
         aStr.addAttribute(TextAttribute.TRANSFORM, transform);
         double x = xCenter + Math.cos(radians) * rNumberBase;
         double y = yCenter + Math.sin(radians) * rNumberBase;
