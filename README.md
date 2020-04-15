@@ -7,4 +7,6 @@ See result.svg:
 ![alt text](https://raw.githubusercontent.com/PyMeH/shaper-watch/master/result.svg "the output of the App")
 
 Finally, the .svg file is passed to a Shaper Origin CNC to perform the cuts.
- 
+
+
+Get a clock mechanism from [here](http://tpetrov.com/search.php?maincat=АКСЕСОАРИ&subcat=ЧАСОВНИЦИ%2C+ТЕРМОМЕТРИ&cat=ЧАСОВНИКОВИ+МЕХАНИЗМИ).
