@@ -4,12 +4,9 @@ plugins {
     id 'idea'
 }
 
-
-sourceCompatibility = '11'
-targetCompatibility = '11'
 group 'PyMeH'
-
 mainClassName = 'maina.App'
+
 repositories {
     mavenLocal()
     mavenCentral()
