@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+}
+
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+group 'PyMeH'
+
+mainClassName = 'maina.App'
+repositories {
+    mavenLocal()
+    mavenCentral()
+ }
+
+dependencies {
+    // https://mvnrepository.com/artifact/batik/batik-svggen
+    implementation group: 'batik', name: 'batik-svggen', version: '1.6-1'
+}
