@@ -43,7 +43,7 @@ public class App {
             .createDocument(//SVGDOMImplementation.SVG_NAMESPACE_URI
                     null, "svg", null);
     final SVGGraphics2D g = new SVGGraphics2D(doc);
-    final String[] hours = new String[]{"XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"};
+    final String[] hours = new String[]{"III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "I", "II"};
 
     public static void main(String[] args) throws Exception {
         new App().drawEmAll();
@@ -74,9 +74,7 @@ public class App {
             if (0 == degrees % 30) {// it is an hour
                 radius = rHourMarks;
                 drawRomanLettersForHour(degrees);
-
-
-            } else radius = rMinuteMarks; // it is theta minute
+            } else radius = rMinuteMarks; // it is a minute
             drawHole(xCenter + Math.cos(radians) * radius, yCenter + Math.sin(radians) * radius);
         }
     }
