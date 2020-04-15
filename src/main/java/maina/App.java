@@ -32,12 +32,12 @@ public class App {
     final Color colCutLine = Color.red;
     final Color colPlywood = new Color(228, 198, 170); //light brown
     final Color colClockFace = new Color(188, 158, 130); //brown
-    final Color colHole = new Color(245, 181, 88);
+    final Color colHole = new Color(245, 181, 88); //yellowish orange
 
-
-    final DOMImplementation dom = GenericDOMImplementation.getDOMImplementation();
-    final Document doc = dom.createDocument(null, "svg", null);
-    final SVGGraphics2D g = new SVGGraphics2D(doc);
+    //.svg generator
+    final SVGGraphics2D g = new SVGGraphics2D(
+            GenericDOMImplementation.getDOMImplementation()
+                    .createDocument(null, "svg", null));
 
 
     public static void main(String[] args) throws Exception {
@@ -45,19 +45,10 @@ public class App {
     }
 
     public void draw() throws Exception {
+        drawRawPlywoodBoard();
+        //draw the clock board (red circle, brown fill)
+        drawCutCircle(xCenter, yCenter, rOuterCut, colClockFace);
 
-
-        { //draw the plywood(red square, light brown fill)
-            RectangularShape rect = new Rectangle2D.Double(0, 0, 2 * rOuterCut, 2 * rOuterCut);
-            g.setPaint(colCutLine);
-            g.draw(rect);
-            g.setPaint(colPlywood);
-            g.fill(rect);
-        }
-
-        { //draw the clock board (red circle, brown fill)
-            drawCutCircle(xCenter, yCenter, rOuterCut, colClockFace);
-        }
 
         for (double a = 0; a < _2PI; a += _2PI / 12) { // 12 hourly dots
             double x = xCenter + Math.cos(a) * rHourMarks;
@@ -69,23 +60,32 @@ public class App {
         for (double a = 0; a < _2PI; a += _2PI / 60) { // 60-12 minute dots
             i++;
             if (0 == i % 5) continue;
-
-            double x = xCenter + Math.cos(a) * rMinuteMarks;
-            double y = yCenter + Math.sin(a) * rMinuteMarks;
-            drawHole(x, y);
+            drawHole(xCenter + Math.cos(a) * rMinuteMarks, yCenter + Math.sin(a) * rMinuteMarks);
         }
 
         for (double a = 0; a < _2PI; a += _2PI / 360) { // 360 tiny dots for numbers
-            drawCutCircle(xCenter + Math.cos(a) * rNumberTop, xCenter + Math.sin(a) * rNumberTop, 1, colClockFace);
-            drawCutCircle(xCenter + Math.cos(a) * rNumberBase, xCenter + Math.sin(a) * rNumberBase, 1, colClockFace);
+            drawCutCircle(xCenter + Math.cos(a) * rNumberTop, xCenter + Math.sin(a) * rNumberTop, 0.2, colClockFace);
+            drawCutCircle(xCenter + Math.cos(a) * rNumberBase, xCenter + Math.sin(a) * rNumberBase, 0.2, colClockFace);
         }
 
+        saveSvg();
+        System.out.println("DONE.");
+    }
 
+    private void saveSvg() throws IOException {
         FileWriter file = new FileWriter("result.svg");
         PrintWriter writer = new PrintWriter(file);
         g.stream(writer);
         writer.close();
-        System.out.println("DONE.");
+    }
+
+    private void drawRawPlywoodBoard() {
+        //draw the plywood(red square, light brown fill)
+        RectangularShape rect = new Rectangle2D.Double(0, 0, 2 * rOuterCut, 2 * rOuterCut);
+        g.setPaint(colCutLine);
+        g.draw(rect);
+        g.setPaint(colPlywood);
+        g.fill(rect);
     }
 
     private void drawHole(double xCenter, double yCenter) {

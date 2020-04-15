@@ -10,5 +10,5 @@
 # Develop
 
 ```./gradlew cleanIdea openIdea```
- 
- 
+
+or if you are hardcore - use emacs to edit code and ```./gradlew run``` to generate the .svg
