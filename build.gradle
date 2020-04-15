@@ -10,9 +10,10 @@ mainClassName = 'maina.App'
 repositories {
     mavenLocal()
     mavenCentral()
- }
+}
 
 dependencies {
-    // https://mvnrepository.com/artifact/batik/batik-svggen
-    implementation group: 'batik', name: 'batik-svggen', version: '1.6-1'
+    // https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-svggen
+    implementation group: 'org.apache.xmlgraphics', name: 'batik-svggen', version: '1.12'
+    implementation group: 'org.apache.xmlgraphics', name: 'batik-dom', version: '1.12'
 }

@@ -1,18 +1,22 @@
 package maina;
 
-import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
-import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
-import org.w3c.dom.css.Rect;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.AttributedCharacterIterator;
+import java.text.AttributedString;
+
+import org.apache.batik.dom.GenericDOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.DOMImplementation;
 
 public class App {
     //radii
@@ -35,57 +39,72 @@ public class App {
     final Color colHole = new Color(245, 181, 88); //yellowish orange
 
     //.svg generator
-    final SVGGraphics2D g = new SVGGraphics2D(
-            GenericDOMImplementation.getDOMImplementation()
-                    .createDocument(null, "svg", null));
-
+    final Document doc = GenericDOMImplementation.getDOMImplementation()
+            .createDocument(//SVGDOMImplementation.SVG_NAMESPACE_URI
+                    null, "svg", null);
+    final SVGGraphics2D g = new SVGGraphics2D(doc);
+    final String[] hours = new String[]{"XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"};
 
     public static void main(String[] args) throws Exception {
-        new App().draw();
+        new App().drawEmAll();
     }
 
-    public void draw() throws Exception {
-        drawRawPlywoodBoard();
-        //draw the clock board (red circle, brown fill)
-        drawCutCircle(xCenter, yCenter, rOuterCut, colClockFace);
+    public void drawEmAll() throws Exception {
+        drawRawPlywoodBoardAndClockCut();
+        drawHourAndMinuteHoles();
+        draw360guides();
 
-
-        for (double a = 0; a < _2PI; a += _2PI / 12) { // 12 hourly dots
-            double x = xCenter + Math.cos(a) * rHourMarks;
-            double y = yCenter + Math.sin(a) * rHourMarks;
-            drawHole(x, y);
-        }
-
-        int i = -1;//skip hourly marks
-        for (double a = 0; a < _2PI; a += _2PI / 60) { // 60-12 minute dots
-            i++;
-            if (0 == i % 5) continue;
-            drawHole(xCenter + Math.cos(a) * rMinuteMarks, yCenter + Math.sin(a) * rMinuteMarks);
-        }
-
-        for (double a = 0; a < _2PI; a += _2PI / 360) { // 360 tiny dots for numbers
-            drawCutCircle(xCenter + Math.cos(a) * rNumberTop, xCenter + Math.sin(a) * rNumberTop, 0.2, colClockFace);
-            drawCutCircle(xCenter + Math.cos(a) * rNumberBase, xCenter + Math.sin(a) * rNumberBase, 0.2, colClockFace);
-        }
-
-        saveSvg();
+        //save .svg
+        g.stream("result.svg");
         System.out.println("DONE.");
     }
 
-    private void saveSvg() throws IOException {
-        FileWriter file = new FileWriter("result.svg");
-        PrintWriter writer = new PrintWriter(file);
-        g.stream(writer);
-        writer.close();
+    private void draw360guides() {
+        for (double theta = 0; theta < _2PI; theta += _2PI / 360) { // 360 tiny dots for numbers
+            drawCutCircle(xCenter + Math.cos(theta) * rNumberTop, xCenter + Math.sin(theta) * rNumberTop, 0.2, colClockFace);
+            drawCutCircle(xCenter + Math.cos(theta) * rNumberBase, xCenter + Math.sin(theta) * rNumberBase, 0.2, colClockFace);
+        }
     }
 
-    private void drawRawPlywoodBoard() {
+    private void drawHourAndMinuteHoles() {
+        for (double degrees = 0; degrees < 360; degrees += 5) { //draw the 60 holes: 12 for hours + 48 for minutes
+            double radians = Math.toRadians(degrees);
+            double radius;
+            if (0 == degrees % 30) {// it is an hour
+                radius = rHourMarks;
+                drawRomanLettersForHour(degrees);
+
+
+            } else radius = rMinuteMarks; // it is theta minute
+            drawHole(xCenter + Math.cos(radians) * radius, yCenter + Math.sin(radians) * radius);
+        }
+    }
+
+    private void drawRomanLettersForHour(double degrees) {
+        double radians = Math.toRadians(degrees);
+        int hour = (int) Math.round(degrees / 30);
+        System.out.println(radians + " rad \t= " + (int) degrees + " deg\tis " + hour + "-th hour, which is\t" + hours[hour]);
+        final AttributedString aStr = new AttributedString(hours[hour]);
+        final AffineTransform transform = new AffineTransform();
+        transform.rotate(radians + Math.toRadians(90.0)); // hour-by-hour rotation is 30 degrees, add 90 more, as we start at rightmost point
+        // transform.scale(2,2);
+        aStr.addAttribute(TextAttribute.TRANSFORM, transform);
+        double x = xCenter + Math.cos(radians) * rNumberBase;
+        double y = yCenter + Math.sin(radians) * rNumberBase;
+        g.setPaint(Color.green);
+        g.drawString(aStr.getIterator(), (float) x, (float) y);
+    }
+
+
+    private void drawRawPlywoodBoardAndClockCut() {
         //draw the plywood(red square, light brown fill)
         RectangularShape rect = new Rectangle2D.Double(0, 0, 2 * rOuterCut, 2 * rOuterCut);
         g.setPaint(colCutLine);
         g.draw(rect);
         g.setPaint(colPlywood);
         g.fill(rect);
+        //draw the clock board (red circle, brown fill)
+        drawCutCircle(xCenter, yCenter, rOuterCut, colClockFace);
     }
 
     private void drawHole(double xCenter, double yCenter) {
