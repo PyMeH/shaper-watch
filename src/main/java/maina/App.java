@@ -60,14 +60,15 @@ public class App {
     }
 
     private void draw360guides() {
-        for (double theta = 0; theta < _2PI; theta += _2PI / 360) { // 360 tiny dots for numbers
+        for (double degrees = 0; degrees < 360; degrees += 1) { // 360 tiny dots for numbers
+            double theta = Math.toRadians(degrees);
             drawCutCircle(xCenter + Math.cos(theta) * rNumberTop, xCenter + Math.sin(theta) * rNumberTop, 0.2, colClockFace);
             drawCutCircle(xCenter + Math.cos(theta) * rNumberBase, xCenter + Math.sin(theta) * rNumberBase, 0.2, colClockFace);
         }
     }
 
     private void drawHourAndMinuteHoles() {
-        for (double degrees = 0; degrees < 360; degrees += 5) { //draw the 60 holes: 12 for hours + 48 for minutes
+        for (double degrees = 0; degrees < 360; degrees += 6) { //draw the 60 holes: 12 for hours + 48 for minutes
             double radians = Math.toRadians(degrees);
             double radius;
             if (0 == degrees % 30) {// it is an hour
