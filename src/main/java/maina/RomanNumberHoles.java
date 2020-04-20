@@ -32,25 +32,23 @@ public class RomanNumberHoles {
             m.put(romanNumber, result);
         });
         holesRowTop = m;
-        holesRowBottom = calculateSecondRow(holesRowTop);
+        holesRowBottom = calculateSecondRow();
     }
 
-    private static Map<String, double[]> calculateSecondRow(Map<String, double[]> rowTop) {
-        Map<String, double[]> rowBottom = new HashMap<>(rowTop);
-        rowTop.forEach((k, t) -> {
+    private static Map<String, double[]> calculateSecondRow() {
+        Map<String, double[]> rowBottom = new HashMap<>(RomanNumberHoles.holesRowTop);
+        RomanNumberHoles.holesRowTop.forEach((k, t) -> {
             final int idx = k.indexOf('V');
             if (-1 != idx) {
                 double[] b = new double[t.length];
                 for (int i = 0; i < t.length; i++) {
                     if (idx == i) {// merge the two holes in the upper row to one hole in the lower
-                        b[i] = (t[i] + t[i + 1]) / 2.0 - Constants.rHoleVbottom;
-                        b[i + 1] = (t[i] + t[i + 1]) / 2.0 + Constants.rHoleVbottom;
+                        b[i] = (t[i] + t[i + 1] - Constants.dDistanceBetweenBottomHolesOfVInMeasuredPixels) / 2.0;
+                        b[i + 1] = (t[i] + t[i + 1] + Constants.dDistanceBetweenBottomHolesOfVInMeasuredPixels) / 2.0;
                         i++;
                     } else b[i] = t[i];
                 }
                 rowBottom.put(k, b);
-                assert b.length == t.length;
-                assert rowBottom.get(k).length == rowTop.get(k).length;
             }
         });
         return rowBottom;
@@ -67,18 +65,24 @@ public class RomanNumberHoles {
         var width = t[t.length - 1];
 
         Coordinate[][] result = {new Coordinate[t.length], new Coordinate[b.length]};
+        double r = Constants.rNumberTop;
         for (int i = 0; i < t.length; i++)
-            result[0][i] = new Coordinate(additionalRotation - widthToDegrees(width) / 2 + widthToDegrees(t[i]), Constants.rNumberTop);
+            result[0][i] = new Coordinate(additionalRotation - pxAtNumberTop2Degrees(width, r) / 2 + pxAtNumberTop2Degrees(t[i], r), r);
 
+        //there is a bug here. Invisible ...
+        //TODO: remove bottom row from all calculations, only make the logic that draws "V" to really care about lower V dot.
+        //TODO: alternatively (not sure it works) - change #widthToDegrees method below to input a radius and scale accordingly
+        r = Constants.rNumberBase;
         for (int i = 0; i < b.length; i++)
-            result[1][i] = new Coordinate(additionalRotation - widthToDegrees(width) / 2 + widthToDegrees(b[i]), Constants.rNumberBase);
+            result[1][i] = new Coordinate(additionalRotation - pxAtNumberTop2Degrees(width, r) / 2 + pxAtNumberTop2Degrees(b[i], r), r);
 
         return result;
     }
 
-    static private double widthToDegrees(double dots) {
-        // 2 deg ~= 40 dots
-        return dots / 20.0;
+    static private double pxAtNumberTop2Degrees(double dots, double radiusAtWhichWeCalculate) {
+        double radiusCorrection = radiusAtWhichWeCalculate / Constants.rNumberTop;
+        radiusCorrection = 1;
+        return radiusCorrection * dots / Constants.pxAtNumberTopInOneDegree;
     }
 
 }

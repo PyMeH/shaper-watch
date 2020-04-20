@@ -2,7 +2,7 @@ package maina;
 
 /**
  * Everything in the clock can be represented in a cylindrical coordinate system, so here's one.
- * The class measures angle in degrees and has methods to convert to radians and into affine coordinate system.
+ * The class measures angle in degrees and has methods to convert to an affine coordinate system.
  * Center of affine system is hardcoded ({@link Constants#xCenter}, {@link Constants#yCenter})
  */
 public class Coordinate implements Constants{ //
@@ -12,7 +12,6 @@ public class Coordinate implements Constants{ //
         this.α = a;
         this.r = r;
     }
-    double radians(){return Math.toRadians(α);}
     public double x(double degrees, double radius) {
         return xCenter + Math.cos(Math.toRadians(degrees)) * radius;
     }
