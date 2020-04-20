@@ -12,7 +12,7 @@ public interface Constants {//in tenths of millimeters
 
 
     final double rMinuteMarks = rOuterCut - rHole * 5;
-    final double rHourMarks = rMinuteMarks - 2 * rHole;
+    final double rHourMarks = rMinuteMarks - 3 * rHole;
     final double rNumberTop = rNumberBase + 2 * rHole * (292.0 / 40);
     final double xCenter = rOuterCut;
     final double yCenter = rOuterCut;
