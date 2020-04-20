@@ -40,16 +40,17 @@ public class RomanNumberHoles {
         rowTop.forEach((k, t) -> {
             final int idx = k.indexOf('V');
             if (-1 != idx) {
-                double[] b = new double[t.length - 1];
-                for (int i = 0, j = 0; i < t.length; i++, j++) {
+                double[] b = new double[t.length];
+                for (int i = 0; i < t.length; i++) {
                     if (idx == i) {// merge the two holes in the upper row to one hole in the lower
-                        b[j] = (t[i] + t[i + 1]) / 2.0;
+                        b[i] = (t[i] + t[i + 1]) / 2.0 - Constants.rHoleVbottom;
+                        b[i + 1] = (t[i] + t[i + 1]) / 2.0 + Constants.rHoleVbottom;
                         i++;
-                    } else b[j] = t[i];
+                    } else b[i] = t[i];
                 }
                 rowBottom.put(k, b);
-                assert b.length + 1 == t.length;
-                assert rowBottom.get(k).length + 1 == rowTop.get(k).length;
+                assert b.length == t.length;
+                assert rowBottom.get(k).length == rowTop.get(k).length;
             }
         });
         return rowBottom;

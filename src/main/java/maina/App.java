@@ -8,7 +8,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RectangularShape;
 
-
 import org.apache.batik.dom.GenericDOMImplementation;
 
 
@@ -27,14 +26,17 @@ public class App implements Constants, ShaperOriginTypesOfCuts {
     }
 
     public void drawEmAll() throws Exception {
-        for (double degrees = 0; degrees < 360; degrees += 1) { // 360 tiny dots for numbers
-            double theta = Math.toRadians(degrees);
-//            drawCircleWithCutColor(xCenter + Math.cos(theta) * rNumberTop, xCenter + Math.sin(theta) * rNumberTop, 0.2, colClockFace);
-//            drawCircleWithCutColor(xCenter + Math.cos(theta) * rNumberBase, xCenter + Math.sin(theta) * rNumberBase, 0.2, colClockFace);
-        }
-
+        g.setSVGCanvasSize(new Dimension((int) Math.round(2 * rOuterCut), (int) Math.round(2 * rOuterCut)));
         drawRawPlywoodBoardAndClockCut();
         drawHourAndMinuteHoles();
+        g.setStroke(new BasicStroke(10));
+        Coordinate a = new Coordinate(-10   , Constants.rNumberBase * 0.9);
+        Coordinate c = new Coordinate(0, 0);
+        g.setColor(Color.black);
+        g.drawLine(c.x(), c.y(), a.x(), a.y());
+        g.setStroke(new BasicStroke(15));
+        a = new Coordinate(37, Constants.rNumberBase * 0.6);
+        g.drawLine(c.x(), c.y(), a.x(), a.y());
 
         //save .svg
         g.stream("result.svg");
@@ -48,7 +50,10 @@ public class App implements Constants, ShaperOriginTypesOfCuts {
                 radius = rHourMarks;
                 drawHolesForRomanNumber(degrees);
             } else radius = rMinuteMarks; // it is a minute
-            drawRopeHole(new Coordinate(degrees, radius));
+            final Coordinate c = new Coordinate(degrees, radius);
+            drawRopeHole(c);
+            drawRope(c, new Coordinate(c.α + 2, rOuterCut + rHole));
+
         }
     }
 
@@ -84,13 +89,16 @@ public class App implements Constants, ShaperOriginTypesOfCuts {
                 case 'V':
                     a = holesTop[i1];
                     b = holesBottom[i2];
+                    i1++;
+                    i2++;
+                    a1 = holesTop[i1];
+                    b1 = holesBottom[i2];
                     drawRopeHole(a);
                     drawRopeHole(b);
+                    drawRopeHole(a1);
+                    drawRopeHole(b1);
                     drawRope(a, b);
-                    i1++;
-                    a = holesTop[i1];
-                    drawRopeHole(a);
-                    drawRope(a, b);
+                    drawRope(a1, b1);
                     i1++;
                     i2++;
                     break;
@@ -129,13 +137,13 @@ public class App implements Constants, ShaperOriginTypesOfCuts {
 
     private void drawRopeHole(Coordinate c) {
         g.setStroke(new BasicStroke());
-        double radius = rHole * 2;
+        double radius = rCollar;
         Ellipse2D circle = new Ellipse2D.Double(c.x() - radius, c.y() - radius, 2 * radius, 2 * radius);
         g.setPaint(Color.black);
         g.draw(circle);
         g.setPaint(Color.black);
         g.fill(circle);
-        drawCircleWithCutColor(c.x(), c.y(), rHole, colHole);
+        //drawCircleWithCutColor(c.x(), c.y(), rHole, colHole);
     }
 
     private void drawCircleWithCutColor(double x, double y, double radius, Color infill) {
@@ -150,7 +158,7 @@ public class App implements Constants, ShaperOriginTypesOfCuts {
     private void drawRope(Coordinate a, Coordinate b) {
         var s = g.getStroke();
         g.setColor(Color.orange);
-        g.setStroke(new BasicStroke((float) rHole * 2));
+        g.setStroke(new BasicStroke((float) dRope));
         g.drawLine(a.x(), a.y(), b.x(), b.y());
         g.setStroke(s);
     }
