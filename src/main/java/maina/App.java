@@ -5,6 +5,9 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.io.FileWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import org.apache.batik.dom.GenericDOMImplementation;
 
@@ -19,9 +22,16 @@ public class App implements Constants {
             GenericDOMImplementation.getDOMImplementation()
                     .createDocument(null, "svg", null));
 
+    private static final int shameonme = 1234567890;
     public static void main(String[] args) throws Exception {
         final App app = new App();
-        app.g.setSVGCanvasSize(new Dimension((int) rOuterCut * 2, (int) rOuterCut * 2));
+        // TODO: Set proper canvas size for 72dpi SVG:
+        // 72 dot/inch  =  2.834646 pixel/millimeter
+        //  1 pixel/millimeter  =  25.4 dot/inch
+        //254 pixel/millimeter  =  6451.6 dot/inch
+        // 10 pixel/millimeter  =  254 dot/inch
+        // int size = (int) Math.round(rOuterCut * 2.0d * 2.834646 / millimeter) + 1;
+        app.g.setSVGCanvasSize(new Dimension(shameonme, shameonme));
         app.cutShapesForCncAndDrawBeautiesForHumans();
     }
 
@@ -48,8 +58,20 @@ public class App implements Constants {
         //draw clock hands
         drawClockHands();
 
+
         //save .svg
-        g.stream("result.svg");
+        Writer sWriter = new StringWriter();
+        g.stream(sWriter);
+        sWriter.close();
+        Writer fWriter = new FileWriter("result.svg");
+        //set document size in mm
+        final int px = (int) (rOuterCut * 2.0d);
+        final int mm = (int) (rOuterCut * 2.0d / millimeter);
+        fWriter.append(sWriter.toString()
+                .replace("" + shameonme, "" + mm + "mm")
+                .replace("<svg ", "<svg viewBox=\"0 0 " + px + " " + px +"\" ")
+        );
+        fWriter.close();
         System.out.println("DONE.");
     }
 
