@@ -1,4 +1,4 @@
-package maina;
+package maina.measurements;
 
 import java.util.AbstractMap;
 import java.util.Map;

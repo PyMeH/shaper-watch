@@ -1,8 +1,8 @@
-package maina;
+package maina.measurements;
 
 import java.util.*;
 
-import static maina.RomanNumberMeasurements.holesUpperRow;
+import static maina.measurements.RomanNumberMeasurements.holesUpperRow;
 
 /**
  * @see RomanNumberMeasurements
@@ -59,7 +59,7 @@ public class RomanNumberHoles {
      * @param additionalRotation e.g. -30 //for "XI"
      * @return coordinates of first and second row of holes that need to be drilled for the given romanNumber
      */
-    static Coordinate[][] toCoordinates(String romanNumber, double additionalRotation) {
+    public static Coordinate[][] toCoordinates(String romanNumber, double additionalRotation) {
         final double[] t = holesRowTop.get(romanNumber);
         final double[] b = holesRowBottom.get(romanNumber);
         var width = t[t.length - 1];

@@ -1,8 +1,5 @@
 package maina;
 
-
-import maina.SvgGenerator;
-
 import java.awt.Color;
 import java.awt.Shape;
 import java.io.IOException;

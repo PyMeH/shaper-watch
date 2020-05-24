@@ -15,8 +15,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="4032.057" cy="2347.684" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3595.473" cy="2312.49" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="4032.057" y1="2347.684" x2="3595.473" y2="2312.49" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="4130.0" cy="2200.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="4130.0" y1="2200.0" x2="4428.642" y2="2277.826" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="4150.0" cy="2200.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="4150.0" y1="2200.0" x2="4428.642" y2="2277.826" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="4238.77" cy="2414.283" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="4238.77" y1="2414.283" x2="4408.298" y2="2510.356" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="4205.203" cy="2626.219" />
@@ -34,8 +34,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3381.033" cy="2951.771" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3836.719" y1="3036.298" x2="3403.305" y2="2915.582" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3684.099" y1="3284.295" x2="3381.033" y2="2951.771" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="3871.429" cy="3165.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3871.429" y1="3165.0" x2="4091.147" y2="3381.72" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="3888.75" cy="3175.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3888.75" y1="3175.0" x2="4091.147" y2="3381.72" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3858.485" cy="3404.96" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3858.485" y1="3404.96" x2="3957.264" y2="3572.925" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3723.447" cy="3571.718" />
@@ -50,8 +50,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2881.519" cy="3422.919" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3242.204" y1="3713.954" x2="2918.32" y2="3401.673" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2990.02" y1="3859.552" x2="2881.519" y2="3422.919" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="3165.0" cy="3871.429" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3165.0" y1="3871.429" x2="3246.922" y2="4168.973" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="3175.0" cy="3888.75" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3175.0" y1="3888.75" x2="3246.922" y2="4168.973" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3033.81" cy="4072.768" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3033.81" y1="4072.768" x2="3035.373" y2="4267.62" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2833.485" cy="4149.666" />
@@ -69,8 +69,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2003.022" cy="4027.415" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2049.963" cy="3591.937" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2003.022" y1="4027.415" x2="2049.963" y2="3591.937" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="2200.0" cy="4130.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2200.0" y1="4130.0" x2="2122.174" y2="4428.642" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="2200.0" cy="4150.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2200.0" y1="4150.0" x2="2122.174" y2="4428.642" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1985.717" cy="4238.77" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1985.717" y1="4238.77" x2="1889.644" y2="4408.298" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1773.781" cy="4205.203" />
@@ -91,8 +91,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1056.91" cy="3639.302" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1329.311" cy="3296.312" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1056.91" y1="3639.302" x2="1329.311" y2="3296.312" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="1235.0" cy="3871.429" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1235.0" y1="3871.429" x2="1018.28" y2="4091.147" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="1225.0" cy="3888.75" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1225.0" y1="3888.75" x2="1018.28" y2="4091.147" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="995.04" cy="3858.485" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="995.04" y1="3858.485" x2="827.075" y2="3957.264" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="828.282" cy="3723.447" />
@@ -116,8 +116,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="464.649" cy="2805.642" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="878.188" cy="2661.316" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="464.649" y1="2805.642" x2="878.188" y2="2661.316" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="528.571" cy="3165.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="528.571" y1="3165.0" x2="231.027" y2="3246.922" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="511.25" cy="3175.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="511.25" y1="3175.0" x2="231.027" y2="3246.922" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="327.232" cy="3033.81" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="327.232" y1="3033.81" x2="132.38" y2="3035.373" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="250.334" cy="2833.485" />
@@ -135,8 +135,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="807.504" cy="2055.245" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="371.851" y1="2009.957" x2="801.427" y2="2263.19" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="363.873" y1="2282.959" x2="807.504" y2="2055.245" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="270.0" cy="2200.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="270.0" y1="2200.0" x2="-28.642" y2="2122.174" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="250.0" cy="2200.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="250.0" y1="2200.0" x2="-28.642" y2="2122.174" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="161.23" cy="1985.717" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="161.23" y1="1985.717" x2="-8.298" y2="1889.644" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="194.797" cy="1773.781" />
@@ -151,8 +151,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1042.924" cy="1411.854" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="680.924" y1="1165.276" x2="938.907" y2="1592.016" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="544.365" y1="1401.804" x2="1042.924" y2="1411.854" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="528.571" cy="1235.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="528.571" y1="1235.0" x2="308.853" y2="1018.28" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="511.25" cy="1225.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="511.25" y1="1225.0" x2="308.853" y2="1018.28" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="541.515" cy="995.04" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="541.515" y1="995.04" x2="442.736" y2="827.075" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="676.553" cy="828.282" />
@@ -170,8 +170,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1450.507" cy="521.755" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1629.113" cy="921.685" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1450.507" y1="521.755" x2="1629.113" y2="921.685" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="1235.0" cy="528.571" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1235.0" y1="528.571" x2="1153.078" y2="231.027" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="1225.0" cy="511.25" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1225.0" y1="511.25" x2="1153.078" y2="231.027" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1366.19" cy="327.232" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="1366.19" y1="327.232" x2="1364.627" y2="132.38" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="1566.515" cy="250.334" />
@@ -192,8 +192,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2463.394" cy="380.971" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2400.627" cy="814.45" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2463.394" y1="380.971" x2="2400.627" y2="814.45" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="2200.0" cy="270.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2200.0" y1="270.0" x2="2277.826" y2="-28.642" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="2200.0" cy="250.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2200.0" y1="250.0" x2="2277.826" y2="-28.642" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2414.283" cy="161.23" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="2414.283" y1="161.23" x2="2510.356" y2="-8.298" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2626.219" cy="194.797" />
@@ -205,8 +205,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3119.0" cy="608.245" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="2900.0" cy="987.564" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3119.0" y1="608.245" x2="2900.0" y2="987.564" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="3165.0" cy="528.571" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3165.0" y1="528.571" x2="3381.72" y2="308.853" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="3175.0" cy="511.25" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3175.0" y1="511.25" x2="3381.72" y2="308.853" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3404.96" cy="541.515" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3404.96" y1="541.515" x2="3572.925" y2="442.736" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3571.718" cy="676.553" />
@@ -221,8 +221,8 @@
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3827.418" cy="1345.744" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="3439.6" cy="1549.315" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3827.418" y1="1345.744" x2="3439.6" y2="1549.315" />
-<circle  fill="gray"	stroke="gray"	r="50.0" cx="3871.429" cy="1235.0" />
-<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3871.429" y1="1235.0" x2="4168.973" y2="1153.078" />
+<circle  fill="gray"	stroke="gray"	r="50.0" cx="3888.75" cy="1225.0" />
+<line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="3888.75" y1="1225.0" x2="4168.973" y2="1153.078" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="4072.768" cy="1366.19" />
 <line    fill="none"	stroke="rgb(255,200,0)"	stroke-width="40.0" stroke-linecap="round" x1="4072.768" y1="1366.19" x2="4267.62" y2="1364.627" />
 <circle  fill="gray"	stroke="gray"	r="50.0" cx="4149.666" cy="1566.515" />

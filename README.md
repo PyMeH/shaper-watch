@@ -8,6 +8,7 @@ See result*.svg:
 ![result](https://raw.githubusercontent.com/PyMeH/shaper-watch/master/result-for-human.svg "for humans")
 
 Finally, the result-for-shaper.svg file is passed to a Shaper Origin CNC to perform the cuts.
+Smallest possible router bit is 6mm (see Constants#rHole)
 
 
 Get a clock mechanism from AliExpress or [here](http://tpetrov.com/search.php?maincat=АКСЕСОАРИ&subcat=ЧАСОВНИЦИ%2C+ТЕРМОМЕТРИ&cat=ЧАСОВНИКОВИ+МЕХАНИЗМИ).
@@ -15,3 +16,4 @@ Get a clock mechanism from AliExpress or [here](http://tpetrov.com/search.php?ma
 I bought 5mmx10mm black plastic washers and cut them where they overlap. Glued with black silicone. 
 
 Rope is added last (after sanding, washers, staining).
+

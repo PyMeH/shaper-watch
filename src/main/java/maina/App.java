@@ -1,6 +1,9 @@
 package maina;
 
 import maina.customsvg.SvgFile;
+import maina.measurements.Constants;
+import maina.measurements.Coordinate;
+import maina.measurements.RomanNumberHoles;
 
 import java.awt.Color;
 import java.awt.geom.Ellipse2D;

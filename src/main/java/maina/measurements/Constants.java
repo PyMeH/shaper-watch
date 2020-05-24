@@ -1,4 +1,4 @@
-package maina;
+package maina.measurements;
 
 public interface Constants {//in tenths of millimeters
     int millimeter = 10;//well, this is .svg, no such thing as mm (unless you set viewBox, but I didn't)
@@ -18,7 +18,7 @@ public interface Constants {//in tenths of millimeters
 
 
     double rMinuteMarks = rOuterCut - rHole * 5;
-    double rHourMarks = rMinuteMarks - 4 * rHole;
+    double rHourMarks = rMinuteMarks - 2 * rWasherOutside;
     double rNumberTop = rNumberBase + 2 * rHole * (292.0 / 40); // "I" is measured to be 292px tall and 40px wide.
     double xCenter = rOuterCut;
     double yCenter = rOuterCut;

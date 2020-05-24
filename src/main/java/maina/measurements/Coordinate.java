@@ -1,4 +1,4 @@
-package maina;
+package maina.measurements;
 
 /**
  * Everything in the clock can be represented in a cylindrical coordinate system, so here's one.
@@ -6,11 +6,11 @@ package maina;
  * Center of affine system is hardcoded ({@link Constants#xCenter}, {@link Constants#yCenter})
  */
 public class Coordinate implements Constants { //
-    final double α; //αλφα
-    final double r; //radius
-    int decimalPlaces = 3; //-1 for "do not round"
+    public final double α; //αλφα
+    public final double r; //radius
+    public int decimalPlaces = 3; //-1 for "do not round"
 
-    Coordinate(double a, double r) {
+    public Coordinate(double a, double r) {
         this.α = a;
         this.r = r;
     }
