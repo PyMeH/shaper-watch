@@ -13,7 +13,7 @@ Smallest possible router bit is 6mm (see Constants#rHole)
 
 Get a clock mechanism from AliExpress or [here](http://tpetrov.com/search.php?maincat=АКСЕСОАРИ&subcat=ЧАСОВНИЦИ%2C+ТЕРМОМЕТРИ&cat=ЧАСОВНИКОВИ+МЕХАНИЗМИ).
 
-I bought 5mmx10mm black plastic washers and cut them where they overlap. Glued with black silicone. 
+I bought black plastic washers (d=5mm D=10mm) and cut them where they overlap. Glued with black silicone to the board. 
 
 Rope is added last (after sanding, washers, staining).
 
