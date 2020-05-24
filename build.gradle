@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-svggen
-    implementation group: 'org.apache.xmlgraphics', name: 'batik-svggen', version: '1.12'
-    implementation group: 'org.apache.xmlgraphics', name: 'batik-dom', version: '1.12'
+    // actually Batink is not needed. It does not allow for drawing a shape with fill AND stroke (adds two shapes instead), so I wrote a custom SVG generator.
+    // implementation group: 'org.apache.xmlgraphics', name: 'batik-svggen', version: '1.12'
+    // implementation group: 'org.apache.xmlgraphics', name: 'batik-dom', version: '1.12'
 }

@@ -1,11 +1,16 @@
 package maina;
 
-import java.awt.*;
+
+import maina.SvgGenerator;
+
+import java.awt.Color;
+import java.awt.Shape;
+import java.io.IOException;
 
 /**
  * See ./shaper origin template.png
  */
-public class ShaperOriginCuts {
+public class ShaperOrigin {
     //colors
     public static final Color INTERIOR_STROKE = Color.black;
     public static final Color INTERIOR_FILL = Color.white;
@@ -23,12 +28,11 @@ public class ShaperOriginCuts {
     public static final Color GUIDE_STROKE = Color.blue;
     public static final Color GUIDE_FILL = GUIDE_STROKE;
 
-    public ShaperOriginCuts(Graphics2D g) {
-        this.g = g;
+    public SvgGenerator svg;
+
+    public ShaperOrigin(SvgGenerator svg) throws IOException {
+        this.svg = svg;
     }
-
-
-    protected Graphics2D g;
 
 
     public void interiorCut(Shape s) {
@@ -48,10 +52,6 @@ public class ShaperOriginCuts {
     }
 
     public void cut(Shape s, Color stroke, Color fill) {
-        g.setColor(stroke);
-        g.setStroke(new BasicStroke(1));
-        g.draw(s);
-        g.setColor(fill);
-        g.fill(s);
+        svg.draw(s, stroke, fill);
     }
 }

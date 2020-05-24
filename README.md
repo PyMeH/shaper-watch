@@ -3,11 +3,15 @@ The end goal we have is to generate an input for a CNC router to cut a beautiful
 <img src="https://raw.githubusercontent.com/PyMeH/shaper-watch/master/end-goal.jpg" alt="end goal" width="200"/>
 
 
-To calculate the placement of holes and cut lines we have a Java application that generates a .svg.
-See result.svg:
-![result](https://raw.githubusercontent.com/PyMeH/shaper-watch/master/result.svg "the output of the App")
+To calculate the placement of holes and cut lines we have a Java application that generates two .svg files - one for the Shaper Origin, and one for humans.
+See result*.svg:
+![result](https://raw.githubusercontent.com/PyMeH/shaper-watch/master/result-for-human.svg "for humans")
 
-Finally, the .svg file is passed to a Shaper Origin CNC to perform the cuts.
+Finally, the result-for-shaper.svg file is passed to a Shaper Origin CNC to perform the cuts.
 
 
-Get a clock mechanism from [here](http://tpetrov.com/search.php?maincat=АКСЕСОАРИ&subcat=ЧАСОВНИЦИ%2C+ТЕРМОМЕТРИ&cat=ЧАСОВНИКОВИ+МЕХАНИЗМИ).
+Get a clock mechanism from AliExpress or [here](http://tpetrov.com/search.php?maincat=АКСЕСОАРИ&subcat=ЧАСОВНИЦИ%2C+ТЕРМОМЕТРИ&cat=ЧАСОВНИКОВИ+МЕХАНИЗМИ).
+
+I bought 5mmx10mm black plastic washers and cut them where they overlap. Glued with black silicone. 
+
+Rope is added last (after sanding, washers, staining).

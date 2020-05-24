@@ -82,7 +82,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\shaper-watch.jar;%APP_HOME%\lib\batik-svggen-1.12.jar;%APP_HOME%\lib\batik-dom-1.12.jar;%APP_HOME%\lib\batik-awt-util-1.12.jar;%APP_HOME%\lib\batik-css-1.12.jar;%APP_HOME%\lib\batik-xml-1.12.jar;%APP_HOME%\lib\batik-util-1.12.jar;%APP_HOME%\lib\batik-ext-1.12.jar;%APP_HOME%\lib\xalan-2.7.2.jar;%APP_HOME%\lib\serializer-2.7.2.jar;%APP_HOME%\lib\xml-apis-1.4.01.jar;%APP_HOME%\lib\xml-apis-ext-1.3.04.jar;%APP_HOME%\lib\xmlgraphics-commons-2.4.jar;%APP_HOME%\lib\batik-constants-1.12.jar;%APP_HOME%\lib\batik-i18n-1.12.jar;%APP_HOME%\lib\commons-io-1.3.1.jar;%APP_HOME%\lib\commons-logging-1.0.4.jar
+set CLASSPATH=%APP_HOME%\lib\shaper-watch.jar
 
 @rem Execute shaper-watch
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SHAPER_WATCH_OPTS%  -classpath "%CLASSPATH%" maina.App %CMD_LINE_ARGS%

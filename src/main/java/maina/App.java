@@ -1,78 +1,62 @@
 package maina;
 
-import org.apache.batik.svggen.SVGGraphics2D;
+import maina.customsvg.SvgFile;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-import java.io.FileWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-
-import org.apache.batik.dom.GenericDOMImplementation;
+import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class App implements Constants {
 
-    //set to false if you are generating a file for a CNC
-    private boolean isSvgForHumans = true;
-
-    //.svg generator
-    final SVGGraphics2D g = new SVGGraphics2D(
-            GenericDOMImplementation.getDOMImplementation()
-                    .createDocument(null, "svg", null));
-
-    private static final int shameonme = 1234567890;
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         final App app = new App();
-        // TODO: Set proper canvas size for 72dpi SVG:
-        // 72 dot/inch  =  2.834646 pixel/millimeter
-        //  1 pixel/millimeter  =  25.4 dot/inch
-        //254 pixel/millimeter  =  6451.6 dot/inch
-        // 10 pixel/millimeter  =  254 dot/inch
-        // int size = (int) Math.round(rOuterCut * 2.0d * 2.834646 / millimeter) + 1;
-        app.g.setSVGCanvasSize(new Dimension(shameonme, shameonme));
-        app.cutShapesForCncAndDrawBeautiesForHumans();
+        app.drawSvg();
+        app.isSvgForHumans = !app.isSvgForHumans;
+        app.drawSvg();
     }
 
-    public void cutShapesForCncAndDrawBeautiesForHumans() throws Exception {
-        final ShaperOriginCuts cnc = new ShaperOriginCuts(g);
+    //set to false if you are generating a file for a CNC
+    private ShaperOrigin shaper;
+    private boolean isSvgForHumans;
 
-        // cut clock body
-        Coordinate center = new Coordinate(0, 0);
-        cnc.exteriorCut(getCircle(center.x(), center.y(), rOuterCut));
+    public void drawSvg() {
+        final String fileName = isSvgForHumans ? "result-for-human.svg" : "result-for-shaper.svg";
+        try (final SvgFile svg = new SvgFile(Path.of(fileName),
+                Constants.rOuterCut * 2 / millimeter,
+                Constants.rOuterCut * 2 / millimeter,
+                Constants.millimeter)) {
+            shaper = new ShaperOrigin(svg);
 
-        cutOuterHourAndMinuteHoles();
+            var cnc = this.shaper;
+            // cut clock body
+            Coordinate center = new Coordinate(0, 0);
 
-        for (double degrees = 0; degrees < 360; degrees += 30) { //draw the 12 holes for hours
-            cutHolesForRomanNumber(degrees);
+            cnc.exteriorCut(getCircle(center.x(), center.y(), rOuterCut));
+
+            cutOuterHourAndMinuteHoles();
+
+            for (double degrees = 0; degrees < 360; degrees += 30) { //draw the 12 holes for hours
+                cutHolesForRomanNumber(degrees);
+            }
+
+            //cut pocket for clock mechanism
+            cnc.pocketingCut(new Rectangle2D.Double(
+                    center.x() - millimeter * 29, center.y() - millimeter * 29,
+                    millimeter * 58, millimeter * 58));
+            //cut hole for clock mechanism
+            cnc.interiorCut(getCircle(center.x(), center.y(), rCenterHole));
+
+            //draw clock hands
+            drawClockHands();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        //cut pocket for clock mechanism
-        cnc.pocketingCut(new Rectangle2D.Double(
-                center.x() - millimeter * 29, center.y() - millimeter * 29,
-                millimeter * 58, millimeter * 58));
-        //cut hole for clock mechanism
-        cnc.interiorCut(getCircle(center.x(), center.y(), rCenterHole));
-
-        //draw clock hands
-        drawClockHands();
-
-
-        //save .svg
-        Writer sWriter = new StringWriter();
-        g.stream(sWriter);
-        sWriter.close();
-        Writer fWriter = new FileWriter("result.svg");
-        //set document size in mm
-        final int px = (int) (rOuterCut * 2.0d);
-        final int mm = (int) (rOuterCut * 2.0d / millimeter);
-        fWriter.append(sWriter.toString()
-                .replace("" + shameonme, "" + mm + "mm")
-                .replace("<svg ", "<svg viewBox=\"0 0 " + px + " " + px +"\" ")
-        );
-        fWriter.close();
-        System.out.println("DONE.");
     }
 
     private void cutOuterHourAndMinuteHoles() {
@@ -151,24 +135,25 @@ public class App implements Constants {
     }
 
     private void cutRopeHoleForBottomOfV(Coordinate c1, Coordinate c2) {
-        final ShaperOriginCuts shaper = new ShaperOriginCuts(g);
 
-        double radius = rCollar;
+        double radius = rWasherOutside;
         shaper.pocketingCut(new Ellipse2D.Double(c1.x() - radius, c1.y() - radius, 2 * radius, 2 * radius));
         shaper.pocketingCut(new Ellipse2D.Double(c2.x() - radius, c2.y() - radius, 2 * radius, 2 * radius));
 
-        radius = rHole;
-        final Color gray = ShaperOriginCuts.INTERIOR_FILL;
-        shaper.cut(new Ellipse2D.Double(c1.x() - radius, c1.y() - radius, 2 * radius, 2 * radius), gray, gray);
-        shaper.cut(new Ellipse2D.Double(c2.x() - radius, c2.y() - radius, 2 * radius, 2 * radius), gray, gray);
+        if (!isSvgForHumans) {
+            radius = rHole;
+            shaper.interiorCut(new Ellipse2D.Double(c1.x() - radius, c1.y() - radius, 2 * radius, 2 * radius));
+            shaper.interiorCut(new Ellipse2D.Double(c2.x() - radius, c2.y() - radius, 2 * radius, 2 * radius));
+        }
     }
 
     private void cutRopeHole(Coordinate c) {
-        double radius = rCollar;
-        final ShaperOriginCuts shaper = new ShaperOriginCuts(g);
+        double radius = rWasherOutside;
         shaper.pocketingCut(new Ellipse2D.Double(c.x() - radius, c.y() - radius, 2 * radius, 2 * radius));
-        radius = rHole;
-        shaper.interiorCut(new Ellipse2D.Double(c.x() - radius, c.y() - radius, 2 * radius, 2 * radius));
+        if (!isSvgForHumans) {
+            radius = rHole;
+            shaper.interiorCut(new Ellipse2D.Double(c.x() - radius, c.y() - radius, 2 * radius, 2 * radius));
+        }
     }
 
     private Ellipse2D getCircle(double x, double y, double radius) {
@@ -177,23 +162,21 @@ public class App implements Constants {
 
     private void drawRope(Coordinate a, Coordinate b) {
         if (isSvgForHumans) {
-            g.setColor(Color.orange);
-            g.setStroke(new BasicStroke((float) dRope));
-            g.drawLine(a.x(), a.y(), b.x(), b.y());
+            Line2D.Double line = new Line2D.Double(a.x(), a.y(), b.x(), b.y());
+            shaper.svg.draw(line, Color.orange, null, dRope);
         }
     }
 
     private void drawClockHands() {
         if (isSvgForHumans) {
             Coordinate c = new Coordinate(0, 0);
-            g.setStroke(new BasicStroke((float) dRope));
             Coordinate a = new Coordinate(-10, Constants.rNumberBase * 0.9);
-            g.setColor(ShaperOriginCuts.GUIDE_STROKE);
-            g.drawLine(c.x(), c.y(), a.x(), a.y());
-            g.setStroke(new BasicStroke((float) (1.5 * dRope)));
+            Line2D.Double line = new Line2D.Double(c.x(), c.y(), a.x(), a.y());
+            shaper.svg.draw(line, ShaperOrigin.GUIDE_STROKE, null, dRope);
+
             a = new Coordinate(37, Constants.rNumberBase * 0.6);
-            g.drawLine(c.x(), c.y(), a.x(), a.y());
+            line = new Line2D.Double(c.x(), c.y(), a.x(), a.y());
+            shaper.svg.draw(line, ShaperOrigin.GUIDE_STROKE, null, 1.5 * dRope);
         }
     }
-
 }
